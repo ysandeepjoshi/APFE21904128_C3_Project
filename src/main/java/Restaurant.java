@@ -3,6 +3,8 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.sound.sampled.ReverbType;
+
 public class Restaurant {
     private String name;
     private String location;
@@ -57,7 +59,18 @@ public class Restaurant {
                 +"Menu:"+"\n"+getMenu());
 
     }
-
+    public int getOrderTotal(ArrayList<String> list)
+    {
+        int totalCost = 0;
+        
+        for(String itemSelected: list) {
+            for(Item item: menu) {
+                if(item.getName().equals(itemSelected))
+                   totalCost += item.getPrice();
+            }
+        }
+        return totalCost;
+    }
     public String getName() {
         return name;
     }
